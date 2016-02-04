@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div><a href="/newsong">Импорт данных в виде JSON</a></div>
+
+<form method="post">
+    <div style="color: red">{{error}}<div>
+    <textarea name="json">{{json}}</textarea>
+    <input type="submit" value="Импортировать">
+</form>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row" style="margin-bottom: 24px;">
+<h2 class="nounderline col-md-12"><a href="{{song.get_url()}}">{{song.title}}</a></h2>
+</div>
+
+{% for rec in recordings %}
+<div class="row">
+    <div class="col-md-12" style="margin-bottom: 8px;">
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-8">
+        {% include "audioplayer.html" %}
+    </div>
+    <form class="col-md-4" method="post" action="{{rec.get_delete_url()}}">
+        <a class="btn btn-default btn-sm" href="{{rec.get_edit_url()}}">Редактировать</a>    
+        <input class="btn btn-default btn-sm" type="submit" value="Удалить">
+    </form>    
+</div>
+{% endfor %}
+<div class="row" style="margin-top: 16px;">
+    <div class="col-md-12">
+        <a class="btn btn-default btn-primary" href="{{song.get_add_rec_url()}}">Добавить аудиозапись</a>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 24px; margin-bottom: 16px;">
+    <div class="col-md-12">
+        <h3>Слова</h3>
+    </div>
+</div>
+{% if edit_lyrics %}
+<form method="post">
+    <div class="row">
+        <textarea id="lyrics" placeholder="Слова песни" class="col-md-12 pretty-font big-font no-border" name="lyrics" style="width: 100%; height: 100%;" autofocus>{{song.lyrics}}</textarea>
+        <script src="/script/jquery.ns-autogrow.min.js"></script>
+        <script>
+            $('#lyrics').autogrow({vertical: true, horizontal: false});
+        </script>
+    </div>
+    <div class="row" style="margin-top: 16px; margin-bottom: 16px;">
+        <div class="col-md-12">
+            <input class="btn btn-default btn-sm" type="submit" value="Сохранить">
+            <a class="btn btn-default btn-sm" href="{{song.get_url()}}#lyrcis">Отменить</a>
+        </div>
+    </div>
+</form>
+{% else %}
+<div class="row" style="margin-bottom: 16px;">
+    <div class="col-md-12">
+        <a class="btn btn-default btn-sm" href="{{song.get_edit_lyrics_url()}}">Редактировать</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 pretty-font big-font">
+        {{song.render_lyrics()|safe}}
+    </div>
+</div>
+{% endif %}
+    
+<div class="row" style="margin-top: 24px; margin-bottom: 40px;">
+    <div class="col-md-12">
+        <form method="post" action="{{song.get_delete_url()}}"><input class="btn btn-danger" type="submit" value="Удалить песню"></form>
+    </div>
+</div>
+{% endblock %}

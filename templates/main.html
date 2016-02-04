@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block header %}
+<div class="page-header nounderline"><h1><a href="/">Русские традиционные песни</a></h1></div>
+{% endblock %}
+
+{% block content %}
+<div class="row" style="margin-bottom: 16px;">
+    <div class="col-md-12">
+        <a class="btn btn-primary btn-default" href="/newsong" role="button">Добавить песню</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Все песни подряд:</h3>
+        <ul>
+            {% for s in songs %}
+                <li><a href="/song/{{s.key().id()}}">{{s.title}}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

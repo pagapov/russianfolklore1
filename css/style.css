@@ -1,0 +1,53 @@
+
+.nounderline a, .nounderline a:hover {
+  text-decoration: none;    
+}
+
+.page-header a {
+  color: black;
+}
+
+.sm2-bar-ui {
+ font-size: 12px;
+}
+.sm2-bar-ui .sm2-main-controls,
+.sm2-bar-ui .sm2-playlist-drawer {
+ background-color: #bcbcbc; /* non-RGBA fallback */
+ background-color: rgba(188, 188, 188, 0.37);
+}
+.sm2-bar-ui .sm2-inline-texture {
+ background: transparent;
+}
+
+.pretty-font {
+    font-family: 'Roboto Slab', serif;
+}
+
+.big-font {
+    font-size: 16px;
+}
+
+.no-border {
+    border-style: none;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
